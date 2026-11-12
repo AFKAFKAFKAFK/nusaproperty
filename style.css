@@ -1,0 +1,266 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #183746;
+}
+footer {
+    background: linear-gradient(90deg, rgba(25, 70, 104, 1), rgba(5, 25, 40, 1), rgba(4, 17, 27, 1));
+    color: white;
+}
+.container-site {
+    width: 100%;
+}
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(90deg, rgba(5, 25, 40, 0.94) 0%, rgba(4, 16, 26, 0.78) 35%, rgba(2, 9, 14, 0.38) 100%),  url('aset/hero-villa.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.hero-content {
+    padding: 2rem;
+    color: #fff;
+    max-width: 1300px;
+    margin: auto;
+    height: 100vh;
+    line-height: 1.1;
+}
+.navbar-brand, .nav-link {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 16px;
+    font-weight: 500;
+}
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 700;
+}
+.hero-title {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+span {
+    color: #efbd87;
+}
+.hero-subtitle {
+    max-width: 400px;
+    font-size: 18px;
+    line-height: 1.65;
+}
+.featured-property {
+    padding: 120px 0;
+    background-color: #f8f9fa;
+}
+
+.card-img-featured-property {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.img-featured-property {
+    width: 100%;
+    max-width: 700px;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+.title-featured-property {
+    font-size: 38px;
+    font-weight: 700;
+    color: #194668;
+    line-height: 1.25;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.desc-featured-property {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #647b8c;
+    max-width: 480px;
+    margin-bottom: 16px;
+}
+
+.list-featured-property {
+    margin-top: 24px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: #2b3445;
+}
+
+.content-featured-property .btn-primary {
+    background-color: #16263e;
+    border-color: #16263e;
+    border-radius: 50px;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.content-featured-property .btn-primary:hover {
+    background-color: #0e1929;
+    border-color: #0e1929;
+}
+.container-cards {
+    margin: 0 auto;
+    max-width: 1250px;
+}
+.contact-section {
+    background-color: #f6f8fa;
+    padding: 72px 0 80px;
+}
+
+.title-contact {
+    margin: 0;
+    color: #194668;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 700;
+    text-align: center;
+}
+
+.contact-desc {
+    max-width: 700px;
+    margin: 10px auto 32px;
+    color: #647b8c;
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.contact-card {
+    padding: 28px;
+    background-color: #fff;
+    border: 1px solid #e8edf1;
+    border-radius: 16px;
+    box-shadow: 0 12px 34px rgba(25, 70, 104, 0.08);
+}
+
+.contact-icon {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: #edf2f5;
+    color: #275b7c;
+    font-size: 18px;
+}
+
+.title-card-contact {
+    margin: 0 0 8px;
+    color: #194668;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.desc-card-contact {
+    min-height: 48px;
+    margin: 0 0 16px;
+    color: #647b8c;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.link-card-contact {
+    color: #194668;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.link-card-contact:hover,
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.site-footer {
+    padding: 56px 0 18px;
+}
+
+.footer-content {
+    padding-bottom: 28px;
+}
+
+.logo-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.text-logo-footer {
+    color: inherit;
+}
+
+.desc-footer {
+    max-width: 300px;
+    margin: 14px 0 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.title-informasi-footer {
+    margin: 0 0 16px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.informasi-footer-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.informasi-footer-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.informasi-footer-list li > i {
+    flex: 0 0 14px;
+    text-align: center;
+}
+
+.site-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    margin-top: 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+}
+
+.copyright {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+}
+

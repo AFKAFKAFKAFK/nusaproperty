@@ -1,510 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jelajahi tiga properti pilihan bersama NusaProperti.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css"/>
-  <title>Latihan Properti — NusaProperti</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --primary: #194668;
-      --primary-dark: #133854;
-      --accent: #c5804b;
-      --background: #f7f8fa;
-      --text: #183746;
-      --muted: #647b8c;
-      --border: #e8ecf0;
-      --white: #fff;
-      --shadow: 0 12px 34px rgba(25, 70, 104, 0.08);
-    }
-
-
-    * {
-      box-sizing: border-box;
-    }
-
-
-    body {
-      min-width: 320px;
-      min-height: 100vh;
-      margin: 0;
-      background: var(--background);
-      color: var(--text);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-    }
-
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    .page {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 22px 0 64px;
-    }
-
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 4px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--primary);
-      font-size: 1.2rem;
-      font-weight: 750;
-      letter-spacing: -0.03em;
-    }
-
-
-    .brand-icon {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(25, 70, 104, 0.08);
-    }
-
-
-    .brand-icon svg {
-      width: 22px;
-      height: 22px;
-    }
-
-
-    .contact-link {
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: var(--primary);
-      color: var(--white);
-      font-size: 0.88rem;
-      font-weight: 650;
-      transition: background 180ms ease, transform 180ms ease;
-    }
-
-
-    .contact-link:hover {
-      transform: translateY(-1px);
-      background: var(--primary-dark);
-    }
-
-
-    .intro {
-      max-width: 680px;
-      margin: 62px auto 42px;
-      text-align: center;
-    }
-
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 750;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-
-    h1 {
-      margin: 0 0 14px;
-      color: var(--primary);
-      font-size: clamp(2rem, 5vw, 3.1rem);
-      font-weight: 750;
-      letter-spacing: -0.055em;
-      line-height: 1.1;
-    }
-
-
-    .intro p {
-      max-width: 580px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 0.96rem;
-      line-height: 1.7;
-    }
-
-
-    .property-grid {
-      overflow: hidden;
-      padding: 8px 4px 44px;
-    }
-
-    .property-grid .swiper-slide {
-      height: auto;
-    }
-
-
-    .property-grid .swiper-pagination {
-      bottom: 8px;
-    }
-
-
-    .property-grid .swiper-pagination-bullet-active {
-      background: var(--primary);
-    }
-
-
-    .property-grid .swiper-button-prev,
-    .property-grid .swiper-button-next {
-      color: var(--primary);
-    }
-
-
-    .property-card {
-      overflow: hidden;
-      border: 1px solid rgba(25, 70, 104, 0.06);
-      border-radius: 18px;
-      background: var(--white);
-      box-shadow: var(--shadow);
-      transition: transform 220ms ease, box-shadow 220ms ease;
-    }
-
-
-    .property-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 42px rgba(25, 70, 104, 0.14);
-    }
-
-
-    .card-image-wrap {
-      padding: 10px 10px 0;
-    }
-
-
-    .card-image {
-      width: 100%;
-      height: 220px;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-
-
-    .badge {
-      top: 20px;
-      left: 20px;
-      padding: 5px 11px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-radius: 999px;
-      background: rgba(25, 70, 104, 0.88);
-      color: var(--white);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-
-    .card-content {
-      padding: 18px 20px 22px;
-    }
-
-
-    .location {
-      margin: 0 0 7px;
-      color: var(--muted);
-      font-size: 0.78rem;
-    }
-
-
-    .property-name {
-      margin: 0 0 12px;
-      color: var(--text);
-      font-size: 1.16rem;
-      font-weight: 720;
-      letter-spacing: -0.025em;
-    }
-
-
-    .specs {
-      display: flex;
-      gap: 16px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      padding-top: 15px;
-    }
-
-
-    .price-label {
-      color: var(--muted);
-      font-size: 0.75rem;
-    }
-
-
-    .price {
-      color: var(--primary);
-      font-size: 1.05rem;
-      font-weight: 750;
-      letter-spacing: -0.025em;
-    }
-
-
-    .page-note {
-      margin: 34px 0 0;
-      color: var(--muted);
-      font-size: 0.78rem;
-      text-align: center;
-    }
-  </style>
-</head>
-
-
-<body>
-  <div class="page">
-    <header class="topbar">
-      <a class="brand" href="index.html" aria-label="NusaProperti — kembali ke beranda">
-        <span class="brand-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M3 9.5L12 3l9 6.5"></path>
-            <path d="M19 13v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-6"></path>
-            <path d="M9 21v-6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6"></path>
-          </svg>
-        </span>
-        NusaProperti
-      </a>
-      <a class="contact-link" href="index.html#contacts">Hubungi Kami</a>
-    </header>
-
-
-    <main>
-      <section class="intro" aria-labelledby="page-title">
-        <span class="eyebrow">Koleksi Properti</span>
-        <h1 id="page-title">Temukan hunian yang terasa seperti rumah</h1>
-        <p>
-          Pilihan rumah dan vila di lokasi strategis, dikurasi untuk membantu Anda menemukan tempat yang sesuai dengan
-          kebutuhan dan gaya hidup.
-        </p>
-      </section>
-
-
-      <section class="property-grid swiper mySwiper" aria-label="Daftar properti pilihan">
-        <div class="swiper-wrapper">
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-1.jpg"
-              alt="Vila modern dengan kolam renang dan pemandangan laut" loading="lazy">
-            <span class="badge">Unggulan</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Pantai Indah Kapuk, Jakarta Utara</p>
-            <h2 class="property-name">Vila Samudra</h2>
-            <div class="specs">
-              <span>4 kamar tidur</span>
-              <span>2 kamar mandi</span>
+  <head>        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NusaProperti - Temukan Properti Impian Anda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container-site">
+        <div class="hero" id="beranda">
+            <nav class="navbar navbar-expand-lg pt-5">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <i class="fa-regular fa-house"></i>
+                        <span class="brand-name">Nusa Property</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#beranda">Beranda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#properti">Properti</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tentang-kami">Tentang Kami</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#kontak">Kontak</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="hero-content d-flex flex-column justify-content-center">
+                <h1 class="hero-title">Temukan Properti<br> <span>Impian Anda</span></h1>
+                <p class="hero-subtitle">NusaProperty membantu Anda menemukan hunian dan peluang investasi yang tepat untuk masa depan. Jelajahi pilihan properti unggulan di berbagai kota di Indonesia bersama tim profesional kami.</p>
             </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 8,5 M</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-2.jpg"
-              alt="Rumah modern dengan halaman hijau di Bandung" loading="lazy">
-            <span class="badge">Populer</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Setiabudi, Bandung</p>
-            <h2 class="property-name">Rumah Setiabudi</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>2 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 4,2 M</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-3.jpg" alt="Vila minimalis di tengah suasana hijau"
-              loading="lazy">
-            <span class="badge">Terverifikasi</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Canggu, Kabupaten Badung, Bali</p>
-            <h2 class="property-name">Vila Cemara</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>1 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 3,75 M</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-4.jpg" alt="Vila minimalis di tengah suasana hijau"
-              loading="lazy">
-            <span class="badge">Terverifikasi</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Canggu, Kabupaten Badung, Bali</p>
-            <h2 class="property-name">Vila Cemara</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>1 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 3,75 M</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-5.jpg" alt="Vila minimalis di tengah suasana hijau"
-              loading="lazy">
-            <span class="badge">Terverifikasi</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Canggu, Kabupaten Badung, Bali</p>
-            <h2 class="property-name">Vila Cemara</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>1 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 3,75 M</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-6.jpg" alt="Vila minimalis di tengah suasana hijau"
-              loading="lazy">
-            <span class="badge">Terverifikasi</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Canggu, Kabupaten Badung, Bali</p>
-            <h2 class="property-name">Vila Cemara</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>1 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 3,75 M</span>
-            </div>
-          </div>
-        </article>
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-7.jpg" alt="Vila minimalis di tengah suasana hijau"
-              loading="lazy">
-            <span class="badge">Terverifikasi</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Canggu, Kabupaten Badung, Bali</p>
-            <h2 class="property-name">Vila Cemara</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>1 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 3,75 M</span>
-            </div>
-          </div>
-        </article>
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-8.jpg" alt="Vila minimalis di tengah suasana hijau"
-              loading="lazy">
-            <span class="badge">Terverifikasi</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Canggu, Kabupaten Badung, Bali</p>
-            <h2 class="property-name">Vila Cemara</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>1 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 3,75 M</span>
-            </div>
-          </div>
-        </article>
-        <article class="property-card swiper-slide">
-          <div class="card-image-wrap">
-            <img class="card-image" src="aset/property-9.jpg" alt="Vila minimalis di tengah suasana hijau"
-              loading="lazy">
-            <span class="badge">Terverifikasi</span>
-          </div>
-          <div class="card-content">
-            <p class="location">Canggu, Kabupaten Badung, Bali</p>
-            <h2 class="property-name">Vila Cemara</h2>
-            <div class="specs">
-              <span>3 kamar tidur</span>
-              <span>1 kamar mandi</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Harga properti</span>
-              <span class="price">Rp 3,75 M</span>
-            </div>
-          </div>
-        </article>
         </div>
-        <div class="swiper-pagination"></div>
-      </section>
-
-
-      <p class="page-note">Informasi harga dan ketersediaan dapat berubah. Hubungi tim kami untuk detail terbaru.</p>
-    </main>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js"></script>
-
-        <!-- Initialize Swiper -->
-        <script>
-        const swiper = new Swiper('.mySwiper', {
-          slidesPerView: 3,
-          spaceBetween: 16,
-          loop: true,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          },
-        });
-        </script>
-</body>
-
-
+        <section class="featured-property" id="properti">
+            <div class="container">
+                <div class="row justify-content-center align-items-center g-4">
+                    <div class="card-img-featured-property col-12 col-lg-6 position-relative">
+                        <img src="aset/feature-house.jpg" alt="Properti Unggul" class="img-featured-property">
+                    </div>
+                    <div class="content-featured-property col-12 col-lg-5" id="tentang-kami">
+                        <h2 class="title-featured-property">Mitra Tepercaya untuk Properti Anda</h2>
+                        <p class="desc-featured-property">NusaProperti adalah mitra konsultasi properti yang membantu Anda menemukan hunian, ruang usaha, maupun aset investasi yang sesuai kebutuhan. Kami mengenal karakter setiap kawasan dan membantu Anda memahami pilihan yang tersedia sebelum mengambil keputusan.</p>
+                        <p class="desc-featured-property">Pendampingan kami mencakup konsultasi kebutuhan, peninjauan properti, pembahasan harga, hingga proses transaksi. Setiap informasi disampaikan dengan jelas agar Anda dapat melangkah dengan lebih yakin, baik saat membeli, menjual, menyewakan, maupun mengembangkan properti.</p>
+                        <ol class="list-featured-property list-unstyled">
+                            <li class="mb-2">
+                                <span class="checkmark fw-bold me-2">✓</span> Konsultasi sesuai kebutuhan dan anggaran
+                            </li>
+                            <li class="mb-2">
+                                <span class="checkmark fw-bold me-2">✓</span> Informasi properti dan harga yang transparan
+                            </li>
+                            <li class="mb-2">
+                                <span class="checkmark fw-bold me-2">✓</span> Pendampingan profesional dari awal hingga transaksi
+                            </li>
+                        </ol>
+                        <a href="#properti" class="btn btn-primary">Lihat Properti &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-section" id="kontak">
+            <div class="container-cards">
+                <h2 class="title-contact">Mari Bicarakan Kebutuhan Properti Anda</h2>
+                <p class="contact-desc">Hubungi tim NusaProperti untuk berkonsultasi tentang hunian, properti komersial, atau peluang investasi.</p>
+                <div class="row g-4 contact-cards">
+                    <article class="col-12 col-md-4">
+                        <div class="contact-card h-100">
+                        <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                        <h3 class="title-card-contact">Email</h3>
+                        <p>Kirim pertanyaan atau kebutuhan properti Anda.</p>
+                        <a href="mailto:halo@nusaproperti.id" class="link-card-contact">halo@nusaproperti.id</a>
+                        </div>
+                    </article>
+                    <article class="col-12 col-md-4">
+                        <div class="contact-card h-100">
+                        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                        <h3 class="title-card-contact">Telepon</h3>
+                        <p>Tim kami siap membantu dan menjawab pertanyaan Anda.</p>
+                        <a href="tel:+622155502026" class="link-card-contact">+62 21 5550 2026</a>
+                        </div>
+                    </article>
+                    <article class="col-12 col-md-4">
+                        <div class="contact-card h-100">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <h3 class="title-card-contact">Kantor</h3>
+                        <p>Kunjungi kantor kami untuk konsultasi langsung.</p>
+                        <a href="https://maps.google.com/?q=Jl.+Jenderal+Sudirman+No.+12,+Jakarta+Selatan" class="link-card-contact">Jl. Jenderal Sudirman No. 12, Jakarta Selatan</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row g-4 footer-content">
+                    <div class="footer-brand col-12 col-sm-6 col-lg-3">
+                        <div class="logo-footer">
+                            <i class="fa-regular fa-house"></i>
+                            <span class="text-logo-footer">NusaProperti</span>
+                        </div>
+                        <p class="desc-footer">Mitra tepercaya untuk jual, sewa, dan investasi properti di Indonesia.</p>
+                    </div>
+                    <div class="footer-column col-12 col-sm-6 col-lg-3">
+                        <h2 class="title-informasi-footer">Tautan</h2>
+                        <ul class="informasi-footer-list">
+                            <li><a href="#">Beranda</a></li>
+                            <li><a href="#">Properti</a></li>
+                            <li><a href="#">Tentang Kami</a></li>
+                            <li><a href="#">Kontak</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column col-12 col-sm-6 col-lg-3">
+                        <h2 class="title-informasi-footer">Hubungi Kami</h2>
+                        <ul class="informasi-footer-list">
+                            <li><i class="fa-regular fa-envelope"></i><a href="mailto:halo@nusaproperti.id">halo@nusaproperti.id</a></li>
+                            <li><i class="fa-solid fa-location-dot"></i><a href="https://maps.google.com/?q=Jl.+Jenderal+Sudirman+No.+12,+Jakarta+Selatan">Jl. Jenderal Sudirman No. 12, Jakarta Selatan</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column col-12 col-sm-6 col-lg-3">
+                        <h2 class="title-informasi-footer">Media Sosial</h2>
+                        <ul class="informasi-footer-list">
+                            <li><i class="fa-brands fa-instagram"></i><a href="#">Instagram</a></li>
+                            <li><i class="fa-brands fa-facebook-f"></i><a href="#">Facebook</a></li>
+                            <li><i class="fa-brands fa-linkedin-in"></i><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-bottom col-12">
+                        <p class="copyright">© 2026 NusaProperti. Hak cipta dilindungi.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
+  </body>
 </html>
